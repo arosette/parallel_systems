@@ -7,6 +7,7 @@
 #include <iostream>
 #include <string>
 #include "Shader.h"
+#include "RawFileParser.h"
 
 // Classe
 

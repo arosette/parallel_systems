@@ -112,10 +112,29 @@ void SceneOpenGL::bouclePrincipale()
 	// Variables
 
 	bool terminer(false);
-	float vertices[] = { -0.5, -0.5, 0.0, 0.5, 0.5, -0.5 };
-	float couleurs[] = { 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0 };
+	float *vertices;
+	float *couleurs;
 
 
+	RawFileParser parser("/Users/arnaud/Downloads/nucleon.raw/test.binary", 3, 3, 3);
+	
+	std::vector< std::vector<float>* >* temp = parser.getNextPlanOpenglFormatted();
+	temp = parser.getNextPlanOpenglFormatted();
+	temp = parser.getNextPlanOpenglFormatted();
+	int nb_of_vertices = temp->at(0)->size();
+	vertices = &(temp->at(0)->at(0));
+	couleurs = &(temp->at(1)->at(0));
+
+	std::cout << temp->at(0)->at(0) << std::endl;
+	std::cout << vertices[0] << std::endl;
+	std::cout << temp->at(0)->at(1) << std::endl;
+	std::cout << vertices[1] << std::endl;
+	std::cout << temp->at(0)->at(2) << std::endl;
+	std::cout << vertices[2] << std::endl;
+	std::cout << temp->at(0)->at(3) << std::endl;
+	std::cout << vertices[3] << std::endl;
+	std::cout << nb_of_vertices << std::endl;
+	
 	// Shader
 
 	Shader shaderCouleur("Shaders/couleur2D.vert", "Shaders/couleur2D.frag");
@@ -158,7 +177,7 @@ void SceneOpenGL::bouclePrincipale()
 
 		// Affichage du triangle
 
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDrawArrays(GL_LINES, 0, nb_of_vertices);
 
 
 		// Désactivation des tableaux Vertex Attrib

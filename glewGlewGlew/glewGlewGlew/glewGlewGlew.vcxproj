@@ -21,10 +21,12 @@
   <ItemGroup>
     <ClCompile Include="bckup.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RawFileParser.cpp" />
     <ClCompile Include="SceneOpenGL.cpp" />
     <ClCompile Include="Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="RawFileParser.h" />
     <ClInclude Include="SceneOpenGL.h" />
     <ClInclude Include="Shader.h" />
   </ItemGroup>
